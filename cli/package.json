@@ -19,10 +19,10 @@
     "postbuild": "node scripts/make-executable.js",
     "test": "node scripts/cli-tests.js"
   },
-  "devDependencies": {},
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.3",
     "commander": "^13.1.0",
-    "spawn-rx": "^5.1.2"
+    "spawn-rx": "^5.1.2",
+    "undici": "^7.15.0"
   }
 }

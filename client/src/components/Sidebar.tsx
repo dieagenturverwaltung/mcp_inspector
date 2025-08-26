@@ -55,6 +55,10 @@ interface SidebarProps {
   setBearerToken: (token: string) => void;
   headerName?: string;
   setHeaderName?: (name: string) => void;
+  headerHost?: string;
+  setHeaderHost?: (name: string) => void;
+  headerHostToken?: string;
+  setHeaderHostToken?: (name: string) => void;
   oauthClientId: string;
   setOauthClientId: (id: string) => void;
   oauthScope: string;
@@ -84,6 +88,10 @@ const Sidebar = ({
   setBearerToken,
   headerName,
   setHeaderName,
+  headerHost,
+  setHeaderHost,
+  headerHostToken,
+  setHeaderHostToken,
   oauthClientId,
   setOauthClientId,
   oauthScope,
@@ -497,6 +505,38 @@ const Sidebar = ({
             </Button>
             {showAuthConfig && (
               <>
+                {/*Host Token*/}
+                <div className="space-y-2 p-3 rounded border">
+                  <h4 className="text-sm font-semibold flex items-center">
+                    Host
+                  </h4>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Host</label>
+                    <Input
+                      placeholder="Authorization"
+                      onChange={(e) =>
+                        setHeaderHost && setHeaderHost(e.target.value)
+                      }
+                      data-testid="header-host-input"
+                      className="font-mono"
+                      value={headerHost}
+                    />
+                    <label
+                      className="text-sm font-medium"
+                      htmlFor="header-token-input"
+                    >
+                      Host Token
+                    </label>
+                    <Input
+                      id="header-token-input"
+                      placeholder="Host Token"
+                      value={headerHostToken}
+                      onChange={(e) => setHeaderHostToken?.(e.target.value)}
+                      data-testid="header-token-input"
+                      className="font-mono"
+                    />
+                  </div>
+                </div>
                 {/* Bearer Token Section */}
                 <div className="space-y-2 p-3 rounded border">
                   <h4 className="text-sm font-semibold flex items-center">

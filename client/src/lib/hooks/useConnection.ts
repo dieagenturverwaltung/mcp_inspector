@@ -66,6 +66,8 @@ interface UseConnectionOptions {
   env: Record<string, string>;
   bearerToken?: string;
   headerName?: string;
+  headerHost?: string;
+  headerHostToken?: string;
   oauthClientId?: string;
   oauthScope?: string;
   config: InspectorConfig;
@@ -88,6 +90,8 @@ export function useConnection({
   env,
   bearerToken,
   headerName,
+  headerHost,
+  headerHostToken,
   oauthClientId,
   oauthScope,
   config,
@@ -375,6 +379,11 @@ export function useConnection({
       // Inject auth manually instead of using SSEClientTransport, because we're
       // proxying through the inspector server first.
       const headers: HeadersInit = {};
+
+      if (headerHost && headerHostToken) {
+        headers["x-host"] = headerHost;
+        headers["x-host-token"] = headerHostToken;
+      }
 
       // Create an auth provider with the current server URL
       const serverAuthProvider = new InspectorOAuthClientProvider(sseUrl);

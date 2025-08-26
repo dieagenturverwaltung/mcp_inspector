@@ -119,6 +119,14 @@ const App = () => {
     return localStorage.getItem("lastHeaderName") || "";
   });
 
+  const [headerHost, setHeaderHost] = useState<string>(() => {
+    return localStorage.getItem("lastHeaderHost") || "";
+  });
+
+  const [headerHostToken, setHeaderHostToken] = useState<string>(() => {
+    return localStorage.getItem("lastHeaderHostToken") || "";
+  });
+
   const [oauthClientId, setOauthClientId] = useState<string>(() => {
     return localStorage.getItem("lastOauthClientId") || "";
   });
@@ -214,6 +222,8 @@ const App = () => {
     env,
     bearerToken,
     headerName,
+    headerHost,
+    headerHostToken,
     oauthClientId,
     oauthScope,
     config,
@@ -308,6 +318,14 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("lastHeaderName", headerName);
   }, [headerName]);
+
+  useEffect(() => {
+    localStorage.setItem("lastHeaderHost", headerHost);
+  }, [headerHost]);
+
+  useEffect(() => {
+    localStorage.setItem("lastHeaderHostToken", headerHostToken);
+  }, [headerHostToken]);
 
   useEffect(() => {
     localStorage.setItem("lastOauthClientId", oauthClientId);
@@ -809,6 +827,10 @@ const App = () => {
           setBearerToken={setBearerToken}
           headerName={headerName}
           setHeaderName={setHeaderName}
+          headerHost={headerHost}
+          setHeaderHost={setHeaderHost}
+          headerHostToken={headerHostToken}
+          setHeaderHostToken={setHeaderHostToken}
           oauthClientId={oauthClientId}
           setOauthClientId={setOauthClientId}
           oauthScope={oauthScope}

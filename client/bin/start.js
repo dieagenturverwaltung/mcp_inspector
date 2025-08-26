@@ -51,6 +51,7 @@ async function startDevServer(serverOptions) {
       MCP_ENV_VARS: JSON.stringify(envVars),
       ...(transport ? { MCP_TRANSPORT: transport } : {}),
       ...(serverUrl ? { MCP_SERVER_URL: serverUrl } : {}),
+      NODE_TLS_REJECT_UNAUTHORIZED: 0,
     },
     signal: abort.signal,
     echoOutput: true,

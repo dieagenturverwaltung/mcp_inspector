@@ -22,11 +22,13 @@ import mcpProxy from "./mcpProxy.js";
 import { randomUUID, randomBytes, timingSafeEqual } from "node:crypto";
 
 const DEFAULT_MCP_PROXY_LISTEN_PORT = "6277";
-const SSE_HEADERS_PASSTHROUGH = ["authorization"];
+const SSE_HEADERS_PASSTHROUGH = ["authorization", "x-host", "x-host-token"];
 const STREAMABLE_HTTP_HEADERS_PASSTHROUGH = [
   "authorization",
   "mcp-session-id",
   "last-event-id",
+  "x-host",
+  "x-host-token",
 ];
 
 const defaultEnvironment = {
